@@ -24,9 +24,7 @@ import pandas as pd
     Populating the interactive namespace from numpy and matplotlib
     
 
-<HR>
-    <H3>Read in data</h3>
-</HR>
+### Read data
 
 
 ```python
@@ -168,7 +166,7 @@ labels_df.head()
 
 
 
-<HR><H3>Split into two DataFrames </H3><HR>
+### Split into two DataFrames
 
 <B>Approach:</B>
 <OL><LI> Create labels_on_gold by filtering those urls that are in the gold set
@@ -181,14 +179,13 @@ labels_on_gold=labels_df[(labels_df['url'].isin(list(gold_df['url'])))]
 labels_unknown=labels_df[~(labels_df['url'].isin(list(gold_df['url'])))]
 ```
 
-<HR><H2> Compute accuracies of turks<HR>
+### Compute accuracies of turks
 
-<B>Approach:</B>
-<OL><LI> Create a new dataframe, called <b>correct_ratings</b>, which contains the no of correctly rated gold-set URLs for each turk
-    <li> Create another dataframe, called <b>rater_goodness</b>, which count of gold set URLs rated by each turk
-    <LI> Merge <b>rater_goodness</b> with correct_ratings, on the index (turks) and assign the result to rater_goodness
-    <LI> Fill NAs for places where correct ratings are none with 0s and find avg correctness
-</OL>
+Approach:
+1. Create a new dataframe, called <b>correct_ratings</b>, which contains the no of correctly rated gold-set URLs for each turk
+2. Create another dataframe, called <b>rater_goodness</b>, which count of gold set URLs rated by each turk
+3. Merge <b>rater_goodness</b> with correct_ratings, on the index (turks) and assign the result to rater_goodness
+4. Fill NAs for places where correct ratings are none with 0s and find avg correctness
 
 
 ```python
@@ -316,7 +313,7 @@ len(rater_goodness)
 
 
 
-<HR><H2>Odds ratios<HR>
+### Odds ratios
 
 
 ```python
@@ -734,7 +731,7 @@ rater_goodness
 
 
 
-<HR><H2>Most accurate turks<HR>
+### Most accurate turks
 
 
 ```python
@@ -880,7 +877,7 @@ rater_goodness[['No of ratings','Avg Correctness']].corr()
 
 <b><i> As we can see from the graph & the table, there is negligible correlation (~4%) betweeen no of gold sets rated and avg correctness 
 
-<HR><H2> Overall predicted odds <HR>
+### Overall predicted odds
 
 <B>Approach:</B>
 <OL><LI> Find Label-Gold (read label minus gold)
@@ -1022,7 +1019,7 @@ uncategorized_odds.sort_values(by="Overall Odds",ascending=False).head(10)
 
 
 
-<HR><H2> Predicted categories <HR>
+### Predicted categories
 
 <B>Approach:</B>
 <OL><LI> Group by URL & Overall odds to find the category which has the highest odds for each url
@@ -1135,7 +1132,7 @@ result_75.sort_values(by="url").head(10)
 
 
 
-<HR><H2> Predicted categories using more turks <HR>
+### Predicted categories using more turks
 
 <B>Approach:</B>
 <OL><LI> Create a <b>result_25</b> the same way as above but by tweaking the quantile condition by 25%
