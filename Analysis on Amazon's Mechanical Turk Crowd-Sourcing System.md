@@ -24,7 +24,9 @@ import pandas as pd
     Populating the interactive namespace from numpy and matplotlib
     
 
-<HR><H2> Read in data<HR>
+<HR>
+    <H3>Read in data</h3>
+</HR>
 
 
 ```python
@@ -166,7 +168,7 @@ labels_df.head()
 
 
 
-<HR><H2>Split into two DataFrames <HR>
+<HR><H3>Split into two DataFrames </H3><HR>
 
 <B>Approach:</B>
 <OL><LI> Create labels_on_gold by filtering those urls that are in the gold set
